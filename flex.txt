@@ -1,0 +1,39 @@
+justify-content  좌우
+-flex-start
+-center
+-flex-end
+-space-between
+-space-evenly
+-space-around
+
+align-items 위아래 붙기
+-stretch
+-flex-start 
+-flex-end
+-center
+
+flex-direction 순서 
+-row
+-row-reverse
+-column
+-column-reverse
+
+align-content 문단 간격
+-normal
+-center
+-flex-start
+-flex-end
+-space-between
+-space-around
+-space-evenly
+-stetch
+
+
+
+
+
+
+
+
+
+

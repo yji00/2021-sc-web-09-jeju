@@ -1,0 +1,1 @@
+scrollSpy('.content', 'active animated flash')
