@@ -23,12 +23,12 @@ function scrollNotice(scTop) {
 		$header.css('top', 'unset')
 		$header.removeClass('active')
 	}
-	else if(scTop < 150) {
+	/* else if(scTop < 150) {
 		$notice.hide()
 		$link.hide()
 		$header.css('top', 'unset')
 		$header.removeClass('active')
-	}
+	}*/
 	else {
 		$notice.hide()
 		$link.hide()
@@ -40,22 +40,12 @@ function scrollNotice(scTop) {
 	}
 }
 
-/* function scrollNotice(scTop) {
-	var $notice = $('.notice-wrapper')
-	var $link = $('.link-wrapper')
-	if(scTop == 0) {
-		$notice.show()
-		$link.show()
-	}
-	else {
-		$notice.hide()
-		$link.hide()
-	}
-} */
-
 
 /*************** 이벤트 등록 *****************/
 $(window).scroll(onScroll).trigger('scroll')
+
+$('.header-wrapper .navi').mouseenter(onNaviEnter)
+$('.header-wrapper .navi').mouseleave(onNaviLeave)
 
 $('.notice-wrapper .bt-show').click(onShowNotice)
 $('.notice-wrapper .bt-hide').click(onHideNotice)
@@ -68,7 +58,17 @@ $('.header-wrapper .link-lang').mouseleave(onHideLang)
 $('.header-wrapper .link-lang .lang').click(onChgLang)
 
 
+
 /*************** 이벤트 콜백 *****************/
+function onNaviEnter() {
+	$('.header-wrapper .sub-wrapper').hide()
+	$(this).find('.sub-wrapper').show()
+}
+
+function onNaviLeave() {
+	$('.header-wrapper .sub-wrapper').hide()
+}
+
 function onScroll(e) {
 	var scTop = $(this).scrollTop()
 	scrollNotice(scTop)
