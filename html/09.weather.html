@@ -1,0 +1,128 @@
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="../js/axios.min.js"></script>
+<script src="../js/moment.min.js"></script>
+<script>
+	// Callback 설명
+	function saleLatte(price, type) {
+		//음료제작
+		var obj = {
+			coffee: type,
+			charge: 500
+		}
+		return obj
+	}
+	var getCoffee = saleLatte(5000, 'latte')
+
+	function saleLatte2(price, type, fn) {
+		//음료제작
+		var obj = {
+			coffee: 'latte',
+			charge: 500
+		}
+		fn(obj)
+	}
+
+	saleLatte2(5000, 'latte', function (r) {
+		// console.log('내 친구가 '+r.coffee+'를 받아서 잘 마시고 잔돈 '+r.charge+'를 나한테 가져왔다.')
+	})
+
+
+	/*
+	1. javascript의 navigator(브라우저, explorer, chrome)객체
+	2. 통신-정말 얘기할게 많지만 자세한 얘기는 백엔드(node)
+	3. 통신을 위한 문서규약 - JSON
+	4. 통신중 하나인 AJAX(Asynchronous Javascript And XML)
+	5. 시간
+	*/
+
+	/*********** 1. navigator.geolocation *************/
+	navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError)
+
+	function onGeoSuccess(r) {
+		console.log(r)
+	}
+
+	function onGeoError(err) {
+		console.log(err.code)
+		console.log(err.message)
+	}
+
+	/*********** 3. 외부와의 연결(통신) - AJAX *************/
+	var json = '{"users":[{"name": "hong"}, {"name": "kong"}]}'	//JSON
+	var jsObj = JSON.parse(json)	//JS Object
+	var json2 = JSON.stringify(jsObj)
+	console.log(json)
+	console.log(jsObj)
+	console.log(json2)
+
+
+
+
+	var url = 'https://api.openweathermap.org/data/2.5/weather?lat=37.566535&lon=126.97796919&units=metric&appid=0cf73b083cc8b56e77a676f5e5fba3f5'
+	var path = 'https://api.openweathermap.org/data/2.5/weather'
+	var data = {
+		lat: 37.566535,
+		lon: 126.97796919,
+		units: 'metric',
+		appid: '0cf73b083cc8b56e77a676f5e5fba3f5'
+	}
+
+	/*********** 4. 외부와의 연결(통신) - AJAX - XMLHttpRequest *************/
+	var xhr = new XMLHttpRequest()
+	var weather
+	xhr.onreadystatechange = function () {
+		if(this.readyState == 4 && this.status == 200) {
+			weather = JSON.parse(this.responseText)
+			console.log(weather)
+		}
+	}
+	xhr.open("GET", url, true)
+	xhr.send();
+
+	
+	/*********** 4. 외부와의 연결(통신) - AJAX - jQuery *************/
+	$.get(path, data, onGetData)
+	function onGetData(r) {
+		console.log(r)
+	}
+
+
+	/*********** 4. 외부와의 연결(통신) - AJAX - Axios *************/
+	axios.get(path, { params: data }).then(onGetAxios).catch(onError)
+	function onGetAxios(r) {
+		console.log(r.data)
+	}
+	function onError(err) {
+		console.log(err)
+	}
+
+
+	/*********** 5. 시간 - Date객체 *************/
+	// new 를 알아보자 -> 10.object 참조
+	var months = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+	var week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
+	var d = new Date()
+	console.log( d.__proto__ )
+
+	console.log(d.getFullYear())
+	console.log(months[d.getMonth()])		// 0 ~ 11
+	console.log(d.getDate())
+	console.log(week[d.getDay()])			// 0 ~ 6
+	console.log(d.getHours())
+	console.log(d.getMinutes())
+	console.log(d.getSeconds())
+
+	console.log( new Date(1619420038000) )
+
+	// moment.js를 알아보자
+	console.log( moment().format('YYYY. M. D. ddd') )
+	console.log( moment().format('hh:mm A') )
+
+	// timestamp를 알아보자
+	// timestamp는 1970-01-01 00:00:00 -> 0 (JAVA ...)
+	// timestamp는 1970-01-01 00:00:00:000 -> 0 (Javascript ...)
+	// 1조6천 -> 밀리초
+	// 16억 -> 초
+	console.log( new Date().getTime() )
+	console.log( moment(1619420666 * 1000).format('YYYY. M. D. ddd') )
+</script>
