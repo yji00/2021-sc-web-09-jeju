@@ -1,4 +1,4 @@
-body > section {position: relative; z-index: 3; background-color: #fff; padding: 5em 0; width: 100%; overflow: hidden;}
+.wrapper-all > section {position: relative; z-index: 3; background-color: #fff; padding: 5em 0; width: 100%; overflow: hidden;}
 .title-wrap {text-align: center; margin-bottom: 3em;}
 .title-wrap h2.title {font-size: 3.5em; margin-bottom: .25em; font-family: 'Jost', sans-serif; letter-spacing: .05em;}
 .title-wrap h3.title {font-size: 2em; margin-bottom: .175em;}
@@ -96,7 +96,7 @@ body > section {position: relative; z-index: 3; background-color: #fff; padding:
 
 
 /********************** style-wrapper *********************/
-.style-wrapper {background-color: #f5f0e7; padding: 5em 0 0 0;}
+section.style-wrapper {background-color: #f5f0e7; padding: 5em 0 0 0;}
 .style-wrapper .list-wrap {display: flex;}
 .style-wrapper .list {flex: 0 0 33.3333%; position: relative;}
 .style-wrapper .list .hover-bg {background-color: rgba(179, 136, 89, 0.95); opacity: 0; width: 100%; height: 100%; position: absolute; top: 0; left: 0; transition: all .5s;}
@@ -114,7 +114,7 @@ body > section {position: relative; z-index: 3; background-color: #fff; padding:
 
 /* moving-aniamtion */
 .style-wrapper .list .bar {width: 30px; height: 2px; background-color: #fff; margin: 0; transition: transform .5s; transform: scaleX(0);}
-.style-wrapper .list .moving-stage {overflow: hidden; height: 0; margin-bottom: 0;}
+.style-wrapper .list .moving-stage {width: 100%; overflow: hidden; height: 0; margin-bottom: 0;}
 .style-wrapper .list .moving-box {transition: all .5s; transform: translateY(100%); opacity: 0;}
 .style-wrapper .list:hover .bar {transform: scaleX(1); margin: 2em auto 1.5em auto;}
 .style-wrapper .list:hover .moving-stage {height: auto;}
@@ -132,9 +132,9 @@ body > section {position: relative; z-index: 3; background-color: #fff; padding:
 .room-wrapper .slide-stage .pager-slide {text-align: center; margin-top: 5em; position: absolute; width: 100%;}
 .room-wrapper .slide-stage .pager-slide .swiper-pagination-bullet-active {border: 1px solid #b38859;}
 .room-wrapper .desc-wrapper {position: absolute; width: 35%; height: 100%; top: 0; left: 80px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; color: #fff;}
-.room-wrapper .desc-wrapper .tag {color: #b38859; font-size: 1.125em; margin-bottom: .5em;}
-.room-wrapper .desc-wrapper .title {font-size: 2.5em; margin-bottom: .5em;}
-.room-wrapper .desc-wrapper .desc {font-size: 1.125em; color: #999; line-height: 1.5; font-weight: 300; margin-bottom: 1em;}
+.room-wrapper .desc-wrapper .tag {width: 100%; color: #b38859; font-size: 1.125em; margin-bottom: .5em;}
+.room-wrapper .desc-wrapper .title {width: 100%; font-size: 2.5em; margin-bottom: .5em;}
+.room-wrapper .desc-wrapper .desc {width: 100%; font-size: 1.125em; color: #999; line-height: 1.5; font-weight: 300; margin-bottom: 1em;}
 .room-wrapper .desc-wrapper .bt-ghost {border: 1px solid #fff;}
 .room-wrapper .desc-wrapper .moving-stage {overflow: hidden;}
 .room-wrapper .desc-wrapper .moving-box {transition: all .35s; transform: translateY(100%);}
@@ -158,7 +158,7 @@ body > section {position: relative; z-index: 3; background-color: #fff; padding:
 
 
 /********************** sns-wrapper *********************/
-.sns-wrapper {background-color: #f5f5f5;}
+section.sns-wrapper {background-color: #f5f5f5;}
 .sns-wrapper .slide-stage {margin-bottom: 2em;}
 .sns-wrapper .slide-stage .swiper-container {overflow: visible;}
 .sns-wrapper .slide {cursor: pointer;}
@@ -168,11 +168,57 @@ body > section {position: relative; z-index: 3; background-color: #fff; padding:
 .sns-wrapper .desc-wrapper { display: flex; justify-content: center; color: #666;}
 .sns-wrapper .desc-wrapper .desc {font-size: 2.25em; font-weight: 300;}
 .sns-wrapper .desc-wrapper .divide {border-left: 1px solid #ccc; margin: 0 5em;}
-.sns-wrapper .desc-wrapper .sns {width: 50px; height: 50px; line-height: 50px; text-align: center;border-radius: 50%; border: 1px solid #ccc; color: #666; font-size: 1.25em;}
+.sns-wrapper .desc-wrapper .sns-wrap {display: flex; align-items: center;}
+.sns-wrapper .desc-wrapper .sns {display: inline-block; width: 50px; height: 50px; line-height: 50px; text-align: center;border-radius: 50%; border: 1px solid #ccc; color: #888; font-size: 1.25em; margin: 0 1em; transition: background-color .35s, color .35s; cursor: pointer;}
+.sns-wrapper .sns-naver {background: url(../img/index/naver.png) no-repeat center; background-size: auto 1.25em;}
+.sns-wrapper .sns-kakao {background: url(../img/index/kakao.png) no-repeat center; background-size: auto 1.25em;}
 
+.sns-wrapper .desc-wrapper .sns:hover {border: #eb7e34; background-color: #eb7e34; color: #fff;}
+.sns-wrapper .sns-naver:hover {background: url(../img/index/naver-hover.png) no-repeat center; background-size: auto 1.25em;}
+.sns-wrapper .sns-kakao:hover {background: url(../img/index/kakao-hover.png) no-repeat center; background-size: auto 1.25em;}
+.sns-wrapper .sns-weixin {position: relative;}
+.sns-wrapper .sns-weixin > .qr-wrap {position: absolute; border: 3px solid #b38859; left: 50%; bottom: calc(100% + 20px); transform: translateX(-50%); z-index: 100; display: none;}
+.sns-wrapper .sns-weixin:hover > .qr-wrap {display: block;}
+/* 
+.sns-wrapper .sns-weixin > .qr-wrap::after {display: block; content: '▼'; color: #b38859; font-size: 1.25em; position: absolute; bottom: -1.25em; left: 50%; transform: translateX(-50%);} 
+*/
+.sns-wrapper .sns-weixin > .qr-wrap::after {display: block; content: ''; width: 0px; height: 0px; border-bottom: 12px solid none; border-top: 12px solid #b38859; border-right: 12px solid transparent; border-left: 12px solid  transparent; position: absolute; bottom: -12px; left: calc(50% - 12px)}
 
 
 /********************** contact-wrapper *********************/
+.contact-wrapper {text-align: left;}
+.contact-wrapper > .wrapper {display: flex; justify-content: space-between;}
+.contact-wrapper > .wrapper > div {flex: 49% 0 0; position: relative;}
+/*
+.contact-wrapper .letter-wrapper .title-wrap {background-image: url(../img/index/bg_news.jpg);  background-position: center; background-size: cover; overflow: hidden; height: 0; padding-top: 56.25%; margin: 0; position: relative; color: #fff;}
+.contact-wrapper .letter-wrapper .title-wrap > div {display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 0 10%;}
+.contact-wrapper .letter-wrapper .title-wrap h3.title {font-size: 2.5em; margin-bottom: .5em;}
+.contact-wrapper .contact-wrapper {border-top: 2px solid #333; border-bottom: 1px solid #bbb;}
+*/
+/* 
+.contact-wrapper .letter-wrapper .title-wrap {position: absolute; color: #fff; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 0 10%;} 
+*/
+.contact-wrapper h3.title {font-size: 2.5em; margin-bottom: .5em; text-align: left;}
+.contact-wrapper h4.title {text-align: left;}
+.contact-wrapper .letter-wrapper .title-wrap {position: absolute; color: #fff; top: 0; left: 0;  left: 10%; top: 50%; transform: translateY(-50%);}
+
+.contact-wrapper .mail-wrapper {border-top: 2px solid #333; border-bottom: 1px solid #ddd; display: flex; align-items: center; justify-content: center;}
+.contact-wrapper .mail-wrap {flex: 80% 0 0;}
+.contact-wrapper .mail-wrap .title-wrap {margin-bottom: 2em;}
+
+.contact-wrapper .mail-form .form-input {display: flex;}
+.contact-wrapper .mail-form .mail-input {flex-grow: 1; border: 1px solid #bbb; padding: 0 1em;}
+.contact-wrapper .mail-form .mail-input::placeholder {color: #bbb; font-size: 1.25em;}
+.contact-wrapper .mail-form .mail-input:focus {border: 1px solid #b38859;}
+.contact-wrapper .mail-form .mail-send {flex-shrink: 0; background-color: #333; color: #fff; padding: 1.5em 2.5em; transition: all .5s;}
+.contact-wrapper .mail-form .mail-send:disabled {background-color: #bbb;}
+
+.contact-wrapper .mail-form .valid-alert {margin: 1em 0; padding: .75em 1em; background-color: #eb7e34; color: #fff; display: none; border-radius: 4px; position: relative;}
+.contact-wrapper .mail-form .valid-alert::before {display: block; content: ''; width: 0px; height: 0px; border-top: 10px solid none; border-bottom: 10px solid #eb7e34; border-right: 10px solid transparent; border-left: 10px solid  transparent; position: absolute; top: -10px; left: 10%;}
+.contact-wrapper .mail-form .valid-alert.active {display: inline-block;}
+
+.contact-wrapper .mail-form .form-check {margin-top: 1em;}
+.contact-wrapper .mail-form .agree-mail {margin-top: 0;}
 
 
 
